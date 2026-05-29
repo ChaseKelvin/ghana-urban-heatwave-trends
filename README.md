@@ -47,10 +47,10 @@ All trends are statistically significant (R² > 0.98, p < 0.0001).
 
 ---
 ## Interactive Map
-[![Map Preview](outputs/figures/ghana_heatwave_map_preview.png)](https://nbviewer.org/github/ChaseKelvin/ghana-urban-heatwave-trends/blob/main/outputs/ghana_heatwave_map.html)
 
-> 👆 Click the image above to open the full interactive map
+[![Ghana Heatwave Map](outputs/figures/ghana_heatwave_map_preview.png)](https://nbviewer.org/github/ChaseKelvin/ghana-urban-heatwave-trends/blob/main/outputs/ghana_heatwave_map.html)
 
+> 👆 Click the image above to open the full interactive map — markers show complete city data including projected 2040 temperatures.
 ---
 
 ## Project Structure
