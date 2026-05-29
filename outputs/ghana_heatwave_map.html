@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_adb5c7aba50915e11ae8a0c74584e20d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 40px; left: 40px; z-index: 1000;
+            background: white; padding: 14px 18px; border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2); font-family: Arial; font-size: 12px;">
+    <b style="font-size:13px;">🌡️ Urban Heat Wave Trends</b><br>
+    <span style="font-size:11px; color:#888;">Ghana — 1990 to 2023</span><br><br>
+    <span style="color:#E63946;">●</span> <b>Accra</b> — Coastal South<br>
+    <span style="color:#2A9D8F;">●</span> <b>Kumasi</b> — Ashanti Forest<br>
+    <span style="color:#E9C46A;">●</span> <b>Tamale</b> — Northern Savanna<br><br>
+    <span style="font-size:11px; color:#888;">Bubble size = heatwave days (2023)<br>
+    Click markers for full data</span>
+</div>
+    
+<div style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; background: white; padding: 10px 20px;
+            border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-family: Arial; font-size: 14px; font-weight: bold; color: #333;">
+    Urban Heat Wave Trends — Ghana (1990–2023)
+</div>
+    
+            <div class="folium-map" id="map_adb5c7aba50915e11ae8a0c74584e20d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_adb5c7aba50915e11ae8a0c74584e20d = L.map(
+                "map_adb5c7aba50915e11ae8a0c74584e20d",
+                {
+                    center: [7.9, -1.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+
+            
+
+        
+    
+            var tile_layer_438c521961a02b4ce9886b0ae0553cf7 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_438c521961a02b4ce9886b0ae0553cf7.addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var tile_layer_26c4a0318295b88dbc9812df9c9b7b80 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_26c4a0318295b88dbc9812df9c9b7b80.addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var tile_layer_c7577b9d36b05d7f925240f17e72c9fd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c7577b9d36b05d7f925240f17e72c9fd.addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var circle_2f1e038d05c7bc5cde951c5a0be8c0cd = L.circle(
+                [5.6037, -0.187],
+                {"bubblingMouseEvents": true, "color": "#E63946", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E63946", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18550, "stroke": true, "weight": 2}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            circle_2f1e038d05c7bc5cde951c5a0be8c0cd.bindTooltip(
+                `<div>
+                     Accra — bubble size = 53 heatwave days in 2023
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_995012253a258ffbb70f3bb0b2e03cd8 = L.marker(
+                [5.6037, -0.187],
+                {
+}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var icon_ef3d911e9a4451a836ee0e2963ea5b8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "thermometer-half",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_008e6f03f1419988ed0a77d1158f9c88 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_58b49e52f0cde2be7019395c3f3d0e0e = $(`<div id="html_58b49e52f0cde2be7019395c3f3d0e0e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; width: 260px; padding: 4px;">         <div style="background:#E63946; color:white; padding:8px 12px;                     border-radius:6px 6px 0 0; margin:-4px -4px 8px -4px;">             <b style="font-size:16px;">Accra</b><br>             <span style="font-size:11px; opacity:0.9;">Greater Accra Region — Coastal South</span>         </div>          <table style="width:100%; font-size:12px; border-collapse:collapse;">             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">27.1°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">30.5°C</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">📈 Temp Anomaly</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">+3.4°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">4 days/yr</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">53 days/yr</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">724 mm</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#2980b9;">481 mm</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">👥 Urban Pop 2023</td>                 <td style="padding:5px 8px; font-weight:bold;">6.28M</td>             </tr>             <tr style="background:#fff3cd;">                 <td style="padding:5px 8px; color:#555;">🔮 Projected 2040</td>                 <td style="padding:5px 8px; font-weight:bold; color:#e67e22;">32.0°C</td>             </tr>         </table>         <div style="margin-top:8px; font-size:10px; color:#888; text-align:center;">             Source: ERA5 / NASA POWER / GMet         </div>     </div>     </div>`)[0];
+                popup_008e6f03f1419988ed0a77d1158f9c88.setContent(html_58b49e52f0cde2be7019395c3f3d0e0e);
+            
+        
+
+        marker_995012253a258ffbb70f3bb0b2e03cd8.bindPopup(popup_008e6f03f1419988ed0a77d1158f9c88)
+        ;
+
+        
+    
+    
+            marker_995012253a258ffbb70f3bb0b2e03cd8.bindTooltip(
+                `<div>
+                     <b>Accra</b> — click for full data
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_995012253a258ffbb70f3bb0b2e03cd8.setIcon(icon_ef3d911e9a4451a836ee0e2963ea5b8e);
+            
+    
+            var circle_b1f1003ace7b4f0abef61cfe7f950767 = L.circle(
+                [6.6885, -1.6244],
+                {"bubblingMouseEvents": true, "color": "#2A9D8F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2A9D8F", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16450, "stroke": true, "weight": 2}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            circle_b1f1003ace7b4f0abef61cfe7f950767.bindTooltip(
+                `<div>
+                     Kumasi — bubble size = 47 heatwave days in 2023
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b3f1b866453a9ce846cfe6d7ffa5691f = L.marker(
+                [6.6885, -1.6244],
+                {
+}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var icon_27320f8fb696d3c616d1520f6231fb47 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "thermometer-half",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d5a5978a02d9afa94574ef36b3fd750e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d5529670c7ee1e2614d4665817af54d5 = $(`<div id="html_d5529670c7ee1e2614d4665817af54d5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; width: 260px; padding: 4px;">         <div style="background:#2A9D8F; color:white; padding:8px 12px;                     border-radius:6px 6px 0 0; margin:-4px -4px 8px -4px;">             <b style="font-size:16px;">Kumasi</b><br>             <span style="font-size:11px; opacity:0.9;">Ashanti Region — Forest Zone</span>         </div>          <table style="width:100%; font-size:12px; border-collapse:collapse;">             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">25.8°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">29.2°C</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">📈 Temp Anomaly</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">+3.4°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">3 days/yr</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">47 days/yr</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">1390 mm</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#2980b9;">1012 mm</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">👥 Urban Pop 2023</td>                 <td style="padding:5px 8px; font-weight:bold;">5.17M</td>             </tr>             <tr style="background:#fff3cd;">                 <td style="padding:5px 8px; color:#555;">🔮 Projected 2040</td>                 <td style="padding:5px 8px; font-weight:bold; color:#e67e22;">30.5°C</td>             </tr>         </table>         <div style="margin-top:8px; font-size:10px; color:#888; text-align:center;">             Source: ERA5 / NASA POWER / GMet         </div>     </div>     </div>`)[0];
+                popup_d5a5978a02d9afa94574ef36b3fd750e.setContent(html_d5529670c7ee1e2614d4665817af54d5);
+            
+        
+
+        marker_b3f1b866453a9ce846cfe6d7ffa5691f.bindPopup(popup_d5a5978a02d9afa94574ef36b3fd750e)
+        ;
+
+        
+    
+    
+            marker_b3f1b866453a9ce846cfe6d7ffa5691f.bindTooltip(
+                `<div>
+                     <b>Kumasi</b> — click for full data
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b3f1b866453a9ce846cfe6d7ffa5691f.setIcon(icon_27320f8fb696d3c616d1520f6231fb47);
+            
+    
+            var circle_b7ac21f3f7794aa268e0c8aa736b68df = L.circle(
+                [9.4075, -0.8533],
+                {"bubblingMouseEvents": true, "color": "#E9C46A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E9C46A", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25900, "stroke": true, "weight": 2}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            circle_b7ac21f3f7794aa268e0c8aa736b68df.bindTooltip(
+                `<div>
+                     Tamale — bubble size = 74 heatwave days in 2023
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e80583da462e09a4ebd5adc28ccfd7ed = L.marker(
+                [9.4075, -0.8533],
+                {
+}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+        
+    
+            var icon_880143703218e6bf65fc112cf02f8849 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "thermometer-half",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f290d47d7aa638900c25fbf2c3a6aeaa = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_290048307e1a35765dd22749ac534a72 = $(`<div id="html_290048307e1a35765dd22749ac534a72" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; width: 260px; padding: 4px;">         <div style="background:#E9C46A; color:white; padding:8px 12px;                     border-radius:6px 6px 0 0; margin:-4px -4px 8px -4px;">             <b style="font-size:16px;">Tamale</b><br>             <span style="font-size:11px; opacity:0.9;">Northern Region — Guinea Savanna</span>         </div>          <table style="width:100%; font-size:12px; border-collapse:collapse;">             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">28.9°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌡️ Mean Temp 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">32.3°C</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">📈 Temp Anomaly</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">+3.4°C</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">8 days/yr</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">☀️ Heatwave Days 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#c0392b;">74 days/yr</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 1990</td>                 <td style="padding:5px 8px; font-weight:bold;">1052 mm</td>             </tr>             <tr style="background:#f8f8f8;">                 <td style="padding:5px 8px; color:#555;">🌧️ Rainfall 2023</td>                 <td style="padding:5px 8px; font-weight:bold; color:#2980b9;">749 mm</td>             </tr>             <tr>                 <td style="padding:5px 8px; color:#555;">👥 Urban Pop 2023</td>                 <td style="padding:5px 8px; font-weight:bold;">2.80M</td>             </tr>             <tr style="background:#fff3cd;">                 <td style="padding:5px 8px; color:#555;">🔮 Projected 2040</td>                 <td style="padding:5px 8px; font-weight:bold; color:#e67e22;">33.6°C</td>             </tr>         </table>         <div style="margin-top:8px; font-size:10px; color:#888; text-align:center;">             Source: ERA5 / NASA POWER / GMet         </div>     </div>     </div>`)[0];
+                popup_f290d47d7aa638900c25fbf2c3a6aeaa.setContent(html_290048307e1a35765dd22749ac534a72);
+            
+        
+
+        marker_e80583da462e09a4ebd5adc28ccfd7ed.bindPopup(popup_f290d47d7aa638900c25fbf2c3a6aeaa)
+        ;
+
+        
+    
+    
+            marker_e80583da462e09a4ebd5adc28ccfd7ed.bindTooltip(
+                `<div>
+                     <b>Tamale</b> — click for full data
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e80583da462e09a4ebd5adc28ccfd7ed.setIcon(icon_880143703218e6bf65fc112cf02f8849);
+            
+    
+            var layer_control_63a9ed7c5033dfb1c1d0a0ad5b6f12c8_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_438c521961a02b4ce9886b0ae0553cf7,
+                    "Dark Mode" : tile_layer_26c4a0318295b88dbc9812df9c9b7b80,
+                    "Street Map" : tile_layer_c7577b9d36b05d7f925240f17e72c9fd,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_63a9ed7c5033dfb1c1d0a0ad5b6f12c8 = L.control.layers(
+                layer_control_63a9ed7c5033dfb1c1d0a0ad5b6f12c8_layers.base_layers,
+                layer_control_63a9ed7c5033dfb1c1d0a0ad5b6f12c8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_adb5c7aba50915e11ae8a0c74584e20d);
+
+        
+</script>
+</html>
