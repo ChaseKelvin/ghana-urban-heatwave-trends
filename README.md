@@ -52,6 +52,9 @@ All trends are statistically significant (R² > 0.98, p < 0.0001).
 
 > 👆 Click the image above to open the full interactive map — markers show complete city data including projected 2040 temperatures.
 ---
+| `qgis_heatwave_map.png` | Professional GIS map — heatwave days + temperature anomaly by city (QGIS) |
+
+---
 
 ## Project Structure
 
